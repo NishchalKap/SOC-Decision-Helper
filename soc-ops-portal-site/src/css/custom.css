@@ -1,0 +1,394 @@
+/**
+ * Any CSS included here will be global.
+ * Override the default Infima variables to create a deep dark cybersecurity theme.
+ */
+
+:root {
+  /* Neon Green Accent */
+  --ifm-color-primary: #39ff14;
+  --ifm-color-primary-dark: #33e612;
+  --ifm-color-primary-darker: #30d911;
+  --ifm-color-primary-darkest: #27b30e;
+  --ifm-color-primary-light: #51ff32;
+  --ifm-color-primary-lighter: #5dff41;
+  --ifm-color-primary-lightest: #82ff6f;
+
+  /* Typography tuned for terminal/ops feel */
+  --ifm-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --ifm-code-font-family: var(--ifm-heading-font-family);
+  --ifm-code-font-size: 90%;
+  
+  /* Highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(57, 255, 20, 0.15);
+}
+
+/* Base Light Mode - Force Darker for Consistency if user forces light mode, 
+   but Docusaurus config respectPrefersColorScheme + defaultMode dark usually handles this. */
+[data-theme='light'] {
+  --ifm-background-color: #f8fafc;
+  --ifm-background-surface-color: #ffffff;
+  --ifm-color-primary: #047857; /* Darker green for light text contrast */
+}
+
+/* Deep Cyber Dark Mode Defaults */
+[data-theme='dark'] {
+  --ifm-background-color: #050505;
+  --ifm-background-surface-color: #0a0a0a;
+  --ifm-navbar-background-color: #050505;
+  --ifm-footer-background-color: #000000;
+  --ifm-font-color-base: #e2e8f0;
+  
+  --ifm-menu-color-background-active: rgba(57, 255, 20, 0.1);
+  --ifm-menu-color-active: var(--ifm-color-primary);
+}
+
+/* Smooth Scrolling globally */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar Tuning */
+.navbar {
+  border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.navbar__title {
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+}
+
+.navbar__item {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+/* Sidebar Tuning - Sticky and spaced */
+.theme-doc-sidebar-menu {
+  margin-top: 1rem;
+}
+
+.menu__list-item-collapsible {
+  margin-bottom: 0.25rem;
+}
+
+.menu__link {
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.menu__link--sublist {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 1rem;
+}
+
+/* Documentation Content Styling */
+.theme-doc-markdown {
+  max-width: 85ch;
+}
+
+.theme-doc-markdown h2 {
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: var(--ifm-color-primary);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(57, 255, 20, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.theme-doc-markdown h3 {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  color: #cbd5e1;
+}
+
+.theme-doc-markdown p, 
+.theme-doc-markdown li {
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.theme-doc-markdown pre {
+  background-color: #0b0f19 !important;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 1.5rem 0;
+}
+
+/* Homepage Hero & Layout */
+.hero {
+  background: radial-gradient(circle at top, #0f172a 0, #050505 60%, #000 100%);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ifm-color-primary), transparent);
+  opacity: 0.5;
+}
+
+.heroBanner {
+  padding: 6rem 1rem 4rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  color: #94a3b8;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Search Bar in Hero */
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 3rem;
+}
+
+.searchBarWrapper {
+  width: 100%;
+  max-width: 600px;
+  /* Reset relative positioning if SearchBar plugin tries to absolute position it */
+  position: relative; 
+  z-index: 100;
+}
+
+/* Force the Docusaurus Search Input to be large on the hero */
+.searchBarWrapper input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(57, 255, 20, 0.4);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.searchBarWrapper input:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.2), 0 10px 25px rgba(0,0,0,0.5);
+  background: rgba(15, 23, 42, 1);
+}
+
+/* Sections & Grids */
+.section {
+  padding: 5rem 0;
+}
+
+.sectionAlt {
+  background-color: #080808;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.sectionHeader {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-family: var(--ifm-heading-font-family);
+  color: var(--ifm-color-primary);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.sectionHeader p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Cards */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardAccentRow {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(5, 5, 5, 0.9));
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(57, 255, 20, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(57, 255, 20, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.cardAccentRow:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(57, 255, 20, 0.2);
+}
+
+.card h3 {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  color: #f8fafc;
+}
+
+.cardAccentRow h3 {
+  color: var(--ifm-color-primary);
+}
+
+.card p {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Buttons */
+.quickNavButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  font-family: var(--ifm-heading-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  color: #000 !important;
+  border: none;
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-light);
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background-color: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.button--secondary:hover {
+  background-color: rgba(30, 41, 59, 1);
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.button--outline {
+  background-color: transparent;
+  color: var(--ifm-color-primary) !important;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.button--outline:hover {
+  background-color: rgba(57, 255, 20, 0.1);
+  box-shadow: inset 0 0 10px rgba(57, 255, 20, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Footer Alignments */
+.footer {
+  border-top: 1px solid rgba(57, 255, 20, 0.2);
+  padding: 4rem 0;
+}
+
+.footer__title {
+  font-family: var(--ifm-heading-font-family);
+  color: var(--ifm-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.footer__link-item {
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+  line-height: 2;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+/* Responsive Overrides */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 1rem 2rem;
+  }
+  
+  .sectionHeader {
+    text-align: center;
+  }
+  
+  .sectionHeader p {
+    margin: 0 auto;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

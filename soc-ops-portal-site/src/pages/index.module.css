@@ -1,0 +1,66 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 5rem 0 3rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 3vw, 3rem);
+}
+
+.heroSubtitle {
+  margin-top: 0.75rem;
+  max-width: 40rem;
+}
+
+.searchBarWrapper {
+  margin-top: 1.75rem;
+  max-width: 32rem;
+}
+
+.quickStats {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.quickNavButtons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.section {
+  padding: 3rem 0 4rem;
+}
+
+.sectionHeader {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  padding: 1.5rem 1.4rem;
+  border-radius: 0.9rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3.5rem 0 2.5rem;
+  }
+}
