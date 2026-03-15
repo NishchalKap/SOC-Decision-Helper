@@ -24,3 +24,10 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Python / runtimes (zero-clutter)
+venv/
+.venv/
+env/
+__pycache__/
+*.tmp
